@@ -1,4 +1,4 @@
-package com.kakaopay.homework;
+package com.ibk.support;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

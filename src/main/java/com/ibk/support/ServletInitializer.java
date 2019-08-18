@@ -1,4 +1,4 @@
-package com.kakaopay.homework;
+package com.ibk.support;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
