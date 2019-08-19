@@ -1,5 +1,6 @@
 package com.ibk.support.localgov.service;
 
+import com.ibk.support.localgov.entity.LocalGovCode;
 import com.ibk.support.localgov.entity.SupportInfo;
 import com.ibk.support.localgov.repository.LocalGovRepository;
 import com.ibk.support.localgov.repository.SupportInfoRepository;
@@ -38,15 +39,20 @@ public class SupportMgntServiceTest {
         InputStream file = new ClassPathResource(fileName).getInputStream();
         MockMultipartFile multipartFile = new MockMultipartFile(fileName, file);
         //when
-        service.saveUploadData(multipartFile);
+        String result = service.saveUploadData(multipartFile);
         //then
+        assertThat(result).isEqualTo("업로드에 성공 했습니다.");
     }
 
     @Test
     public void getSupportListTest() {
         //give
+        LocalGovCode localGovCode = new LocalGovCode();
+        localGovCode.setLocalGovName("강릉시");
+        localGovCode.setLocalGovCode("REG0001");
+
         SupportInfo supportInfo = new SupportInfo();
-        supportInfo.setRegionCode("reg453");
+        supportInfo.setLocalGovCode(localGovCode);
         supportInfo.setTarget("강릉소재 중소기업");
         supportInfo.setReason("운전");
         supportInfo.setLimit("8억원 이내");
@@ -54,8 +60,6 @@ public class SupportMgntServiceTest {
         supportInfo.setRecommend("강릉시");
         supportInfo.setManager("강릉지점");
         supportInfo.setDealer("강릉시 소재 영업점");
-        supportInfo.setLat(0.0);
-        supportInfo.setLon(0.0);
 
         //when
         when(supportInfoRepository.findAll()).thenReturn(Arrays.asList(supportInfo));

@@ -10,13 +10,9 @@ import javax.persistence.*;
 public class LocalGovCode {
 
     @Id
-    @Column(name = "REGION_CODE", nullable = false, length = 100)
-    private String regionCode;
+    @Column(name = "CODE", nullable = false, length = 100)
+    private String localGovCode;
 
     @Column(name = "NAME", nullable = false, length = 200)
-    private String regionName;
-
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    @JoinColumn(name = "REGION_CODE")
-    private SupportInfo supportInfo;
+    private String localGovName;
 }

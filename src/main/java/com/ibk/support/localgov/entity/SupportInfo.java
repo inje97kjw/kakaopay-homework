@@ -1,7 +1,6 @@
 package com.ibk.support.localgov.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,15 +11,15 @@ import java.util.Date;
 public class SupportInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Long id;
+    private String id;
 
-    @Column(name = "REGION_CODE", nullable = false)
-    private String regionCode;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CODE")
+    private LocalGovCode localGovCode;
 
-    @Column(name = "REGION_NAME", nullable = false)
-    private String regionName;
+    @Column(name = "LOCALGOV_NAME", nullable = false)
+    private String localGovName;
 
     @Column(name = "TARGET", nullable = false)
     private String target;
@@ -51,11 +50,5 @@ public class SupportInfo {
     @Column(name = "UPDATE_DATE", nullable = false)
     private Date updateDate;
 
-    @Column(name = "LAT", nullable = true)
-    @ColumnDefault("0.0")
-    private double lat;
 
-    @Column(name = "LON", nullable = true)
-    @ColumnDefault("0.0")
-    private double lon;
 }
