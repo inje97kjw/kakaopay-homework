@@ -2,6 +2,7 @@ package com.ibk.support.localgov.service;
 
 import com.ibk.support.localgov.entity.LocalGovCode;
 import com.ibk.support.localgov.entity.SupportInfo;
+import com.ibk.support.localgov.model.SearchRequest;
 import com.ibk.support.localgov.repository.SupportInfoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +20,7 @@ public class SupportMgntService {
     @Autowired
     private SupportInfoRepository supportInfoRepository;
 
-    public String saveUploadData(MultipartFile file) throws Exception {
+    public String saveUploadData(MultipartFile file) {
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(file.getInputStream(), "MS949");
             BufferedReader br = new BufferedReader(inputStreamReader);
@@ -51,13 +51,14 @@ public class SupportMgntService {
 
                 supportInfoRepository.save(supportInfo);
             }
-        } catch (IOException ioe) {
-            throw new Exception("업로드에 실패 했습니다.");
+        } catch (Exception e) {
+            log.info("데이터 저장에 실패 했습니다. : %s", e);
+            return "fail";
         }
-        return "업로드에 성공 했습니다.";
+        return "success";
     }
 
-    public List<SupportInfo> getSupportList() {
+    public List<SupportInfo> getSupportList(SearchRequest searchRequest) {
         return supportInfoRepository.findAll();
     }
 
