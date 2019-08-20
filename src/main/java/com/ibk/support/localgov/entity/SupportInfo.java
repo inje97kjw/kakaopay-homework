@@ -15,32 +15,29 @@ public class SupportInfo {
     private String id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CODE")
-    private LocalGovCode localGovCode;
-
-    @Column(name = "LOCALGOV_NAME", nullable = false)
-    private String localGovName;
+    @JoinColumn(name = "REGION_CODE")
+    private Region region;
 
     @Column(name = "TARGET", nullable = false)
     private String target;
 
-    @Column(name = "REASON", nullable = false)
-    private String reason;
+    @Column(name = "USAGE", nullable = false)
+    private String usage;
 
     @Column(name = "`LIMIT`", nullable = false)
     private String limit;
 
-    @Column(name = "REWARD", nullable = false)
-    private String reward;
+    @Column(name = "RATE", nullable = false)
+    private String rate;
 
-    @Column(name = "RECOMMEND", nullable = false)
-    private String recommend;
+    @Column(name = "INSTITUTE", nullable = false)
+    private String institute;
 
-    @Column(name = "MANAGER", nullable = false)
-    private String manager;
+    @Column(name = "MGMT", nullable = false)
+    private String mgmt;
 
-    @Column(name = "DEALER", nullable = false)
-    private String dealer;
+    @Column(name = "RECEPTION", nullable = false)
+    private String reception;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "REG_DATE", nullable = false, updatable = false)

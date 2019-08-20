@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SupportInfoRepository extends JpaRepository<SupportInfo, Long> {
+public interface SupportInfoRepository extends JpaRepository<SupportInfo, Long>, SupportInfoRepositoryCustom {
+    SupportInfo findByRegionRegionCode(String regionCode);
 }
