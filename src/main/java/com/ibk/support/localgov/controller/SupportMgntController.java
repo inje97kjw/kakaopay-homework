@@ -34,11 +34,8 @@ public class SupportMgntController {
 
     @GetMapping("/list")
     @ResponseBody
-    public List<SearchSupportInfo> getSupportInfoList(@RequestBody(required=false) SearchRequest searchRequest) {
-        if (searchRequest == null) {
-            searchRequest = new SearchRequest();
-        }
-        return supportMgntService.getSupportInfoList(searchRequest);
+    public List<SearchSupportInfo> getSupportInfoList() {
+        return supportMgntService.getSupportInfoListAll();
     }
 
     @GetMapping("/info")
@@ -63,7 +60,7 @@ public class SupportMgntController {
 
         List<SearchSupportInfo> searchSupportInfoList = supportMgntService.getSupportInfoList(searchRequest);
         return searchSupportInfoList.stream()
-                .map(s -> s.getRegion())
+                .map(SearchSupportInfo::getRegion)
                 .collect(Collectors.toList());
     }
 
@@ -78,7 +75,7 @@ public class SupportMgntController {
 
         List<SearchSupportInfo> searchSupportInfoList = supportMgntService.getSupportInfoList(searchRequest);
         return searchSupportInfoList.stream()
-                .map(s -> s.getRegion())
+                .map(SearchSupportInfo::getRegion)
                 .collect(Collectors.toList());
     }
 }

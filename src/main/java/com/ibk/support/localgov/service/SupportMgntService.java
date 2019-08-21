@@ -30,7 +30,7 @@ public class SupportMgntService {
             BufferedReader br = new BufferedReader(inputStreamReader);
             br.readLine();
 
-            String line;
+            String line = null;
             while ((line = br.readLine()) != null) {
                 //1,강릉시,강릉시 소재 중소기업으로서 강릉시장이 추천한 자,운전,추천금액 이내,3%,강릉시,강릉지점,강릉시 소재 영업점
                 String[] values = line.split(",");
@@ -78,10 +78,14 @@ public class SupportMgntService {
         return "success";
     }
 
-    public List<SearchSupportInfo> getSupportInfoList(SearchRequest searchRequest) {
+    public List getSupportInfoListAll() {
+        return getSupportInfoList(new SearchRequest());
+    }
+
+    public List getSupportInfoList(SearchRequest searchRequest) {
         List<SearchSupportInfo> searchSupportInfoList = supportInfoRepository.search();
         if (CollectionUtils.isEmpty(searchSupportInfoList)) {
-            return Collections.EMPTY_LIST;
+            return Collections.emptyList();
         }
         if (searchSupportInfoList.size() < searchRequest.getCount()) {
             searchRequest.setCount(searchSupportInfoList.size());

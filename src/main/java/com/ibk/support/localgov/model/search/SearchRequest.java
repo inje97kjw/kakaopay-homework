@@ -10,9 +10,6 @@ public class SearchRequest {
     Sort sort = Sort.DEFAULT;
 
     public boolean isResionCondition () {
-        if (StringUtils.isEmpty(this.region)) {
-            return false;
-        }
-        return true;
+        return !StringUtils.isEmpty(this.region);
     }
 }
