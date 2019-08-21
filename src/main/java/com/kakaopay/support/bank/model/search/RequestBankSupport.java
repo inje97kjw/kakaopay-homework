@@ -14,4 +14,11 @@ public class RequestBankSupport {
     public boolean isResionCondition () {
         return !StringUtils.isEmpty(this.region);
     }
+
+    public int adjustLimitCount(int listSize) {
+        if (listSize < this.count) {
+            this.count = listSize;
+        }
+        return this.count;
+    }
 }

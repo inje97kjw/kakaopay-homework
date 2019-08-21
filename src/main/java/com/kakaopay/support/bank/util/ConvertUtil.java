@@ -7,6 +7,10 @@ public class ConvertUtil {
     public static final String LIMIT_BILLION  = "억원 이내";
     public static final String LIMIT_MILLION = "백만원 이내";
 
+    public static final String LIMIT_SIMPLE_BILLION  = "억";
+    public static final String LIMIT_SIMPLE_MILLION = "백만원";
+
+
     public static final String RANGE_RATE_DELIMETER  = "~";
     public static final String RATE_ALL  = "대출이자 전액";
 
@@ -17,9 +21,9 @@ public class ConvertUtil {
     }
 
     public static long limitConvertToNumber(String limit) {
-        if (limit.indexOf(LIMIT_BILLION) >= 0) {
+        if (limit.indexOf(LIMIT_BILLION) >= 0 || limit.indexOf(LIMIT_SIMPLE_BILLION) >= 0) {
             return Long.parseLong(onlyNumStr(limit)) * 100000000;
-        } else if (limit.indexOf(LIMIT_MILLION) >= 0) {
+        } else if (limit.indexOf(LIMIT_MILLION) >= 0 || limit.indexOf(LIMIT_SIMPLE_MILLION) >= 0) {
             return Long.parseLong(onlyNumStr(limit)) * 1000000;
         } else {
             return 0;

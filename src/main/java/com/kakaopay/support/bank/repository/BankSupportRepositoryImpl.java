@@ -1,7 +1,7 @@
 package com.kakaopay.support.bank.repository;
 
 import com.kakaopay.support.bank.entity.BankSupport;
-import com.kakaopay.support.entity.QBankSupport;
+import com.kakaopay.support.bank.entity.QBankSupport;
 import com.kakaopay.support.bank.model.search.RequestBankSupport;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;

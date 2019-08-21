@@ -1,6 +1,5 @@
 package com.kakaopay.support.bank.controller;
 
-import com.kakaopay.support.bank.controller.BankSupportController;
 import com.kakaopay.support.bank.service.BankSupportService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +27,7 @@ public class BankSupportControllerTests {
     @Test
     public void list() throws Exception {
         //given
+
 
         //when
         final MockHttpServletResponse response = mvc.perform(get("/bank-support/list"))

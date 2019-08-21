@@ -5,10 +5,7 @@ import com.kakaopay.support.bank.model.search.ResponceBankSupport;
 import com.kakaopay.support.bank.model.search.Sort;
 import com.kakaopay.support.bank.service.BankSupportService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +21,7 @@ public class MatchingSupportController {
         this.bankSupportService = bankSupportService;
     }
 
-    @GetMapping("/list/max-limit-support")
+    @GetMapping("/max-limit-support")
     public List<String> getMaxLimitSupportList(@RequestBody(required=true) RequestBankSupport requestBankSupport) {
         requestBankSupport.setSort(Sort.LIMIT_DESC);
 
@@ -34,7 +31,7 @@ public class MatchingSupportController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/list/min-rate-support")
+    @GetMapping("/min-rate-support")
     public List<String> getMinRateSupportList() {
         RequestBankSupport requestBankSupport = RequestBankSupport.builder()
                 .count(1)
@@ -45,5 +42,10 @@ public class MatchingSupportController {
         return responceBankSupportList.stream()
                 .map(ResponceBankSupport::getRegion)
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping("/article-analysis-recommend")
+    public List<ResponceBankSupport> getMinRateSupportList(@RequestBody(required = true) String input) {
+        return bankSupportService.getArticleAanalysisRecommend(input);
     }
 }

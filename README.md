@@ -7,7 +7,7 @@
   - log4j
   
 ### API 명세 제공 및 테스트
-  - Swagger 2.9.2 
+  - Swagger 2.9.2 : http://localhost:8080/swagger-ui.html
 
 ## 문제해결 방법
 
