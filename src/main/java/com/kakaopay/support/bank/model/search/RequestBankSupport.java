@@ -10,6 +10,7 @@ public class RequestBankSupport {
     String region;
     int count;
     Sort sort;
+    Format format;
 
     public boolean isResionCondition () {
         return !StringUtils.isEmpty(this.region);

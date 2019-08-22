@@ -1,7 +1,7 @@
 package com.kakaopay.support.bank.util;
 
-import com.kakaopay.support.bank.util.ConvertUtil;
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConvertUtilTest {
